@@ -342,7 +342,7 @@
     const balance = async() => {
         
         const abi_json_parsed = JSON.parse(abi)
-        contract = new web3.eth.Contract(abi_json_parsed, contract_address) 
+        contract = new web3.eth.Contract(abi_json_parsed, web3.utils.toChecksumAddress(contract_address)) 
         
         const tokenBalance = await contract.methods.balanceOf(walletAddress[0]).call()
         
@@ -357,8 +357,8 @@
         const decimals = web3.utils.toBN(18)
         
         const abi_json_parsed = JSON.parse(abi)
-        contract = new web3.eth.Contract(abi_json_parsed, contract_address) 
-
+        contract = new web3.eth.Contract(abi_json_parsed, web3.utils.toChecksumAddress(contract_address)) 
+        
         const value = amount.mul(web3.utils.toBN(10).pow(decimals))
         
         contract.methods.transfer(toAddress, value).send({from: walletAddress[0]})
