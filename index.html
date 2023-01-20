@@ -303,7 +303,7 @@
         ]
     `
 
-    const contractAddress = "0x52f4331A09883205eB6C3254b0d63842993Ded15";
+    const contract_address = "0xb0Ba5f62940A2eCb0d62D6F7E0ADDFeEcbA70dd9";
 
     var web3
     var walletAddress
@@ -342,7 +342,7 @@
     const balance = async() => {
         
         const abi_json_parsed = JSON.parse(abi)
-        contract = new web3.eth.Contract(abi_json_parsed, contractAddress) 
+        contract = new web3.eth.Contract(abi_json_parsed, contract_address) 
         
         const tokenBalance = await contract.methods.balanceOf(walletAddress[0]).call()
         
@@ -357,7 +357,7 @@
         const decimals = web3.utils.toBN(18)
         
         const abi_json_parsed = JSON.parse(abi)
-        contract = new web3.eth.Contract(abi_json_parsed, contractAddress) 
+        contract = new web3.eth.Contract(abi_json_parsed, contract_address) 
 
         const value = amount.mul(web3.utils.toBN(10).pow(decimals))
         
